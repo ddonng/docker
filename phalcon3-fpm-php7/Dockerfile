@@ -53,4 +53,8 @@ RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN docker-php-ext-install sockets
 
 VOLUME ["/var/www/html"]
-RUN echo date.timezone = PRC >> /usr/local/etc/php/php.ini
+RUN echo "date.timezone = PRC\n"\
+    "memory_limit = 256M\n" \
+    "upload_max_filesize = 200M\n" \
+    "post_max_size = 200M\n" \
+    "max_execution_time = 60\n" >> /usr/local/etc/php/php.ini
